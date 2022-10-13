@@ -109,11 +109,24 @@ printf("NO MEMORY");
 }
 else
 {
+int check=0;
 printf("\nEnter the element before which the element to be inserted ");
 scanf("%d",&search);
 printf("\nEnter the value ");
 scanf("%d",&newnode->val);
 temp=HEAD;
+while(temp!=NULL)
+{
+    if(temp->val==search)
+    {
+        check=1;
+        break;
+    }
+    temp=temp->next;
+}
+if(check==1)
+{
+  temp=HEAD;
 while(temp->val!=search)
 {
 dummy=temp;
@@ -122,6 +135,11 @@ temp=temp->next;
 dummy->next=newnode;
 newnode->next=temp;
 
+}
+else
+{
+  printf('The value before which the element ot be inserted is not in the list");
+}
 }
 }
 //Function to insert a node at the end
